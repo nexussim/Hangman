@@ -1,0 +1,45 @@
+#headContainer {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+#circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px solid black;
+}
+
+#bodyContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#stickBody {
+    width: 10px;
+    height: 250px;
+    background-color: black;
+}
+
+#leftArm {
+    width: 10px;
+    height: 100px;
+    margin-left: -60px;
+    background-color: black;
+    -moz-transform: skew(45deg);
+    -webkit-transform: skew(45deg);
+    transform: skew(45deg);
+}
+
+#rightArm {
+    width: 10px;
+    height: 100px;
+    margin-left: 40px;
+    margin-right: -80px;
+    background-color: black;
+    -moz-transform: skew(-45deg);
+    -webkit-transform: skew(-45deg);
+    transform: skew(-45deg);
+}
