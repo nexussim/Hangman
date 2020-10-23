@@ -80,3 +80,9 @@ const hangman = () => {
 
 
 
+letterGuess('x');
+letterGuess('x');
+letterGuess('x');
+letterGuess('x');
+letterGuess('x');
+letterGuess('x');

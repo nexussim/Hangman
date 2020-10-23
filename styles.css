@@ -51,13 +51,14 @@ body {
 #legContainer {
     display: flex;
     justify-content: center;
+    margin-top: -4px;
 }
 
 #leftLeg {
     width: 10px;
     height: 100px;
-    margin-left: 40px;
-    margin-right: 90px;
+    margin-right: 100px;
+    border-top-left-radius: 4px;
     background-color: black;
     -moz-transform: skew(-45deg);
     -webkit-transform: skew(-45deg);
@@ -67,8 +68,7 @@ body {
 #rightLeg {
     width: 10px;
     height: 100px;
-    
-    margin-right: 40px;
+    border-top-right-radius: 4px;
     background-color: black;
     -moz-transform: skew(45deg);
     -webkit-transform: skew(45deg);
