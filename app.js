@@ -73,10 +73,3 @@ const hangman = () => {
   }
 }
 
-
-
-letterGuess('z');
-letterGuess('y');
-letterGuess('x');
-letterGuess('w');
-letterGuess('z');
