@@ -9,6 +9,8 @@ let bodyContainer = document.getElementById('bodyContainer');
 let mainBody = document.getElementById('mainBody');
 let armOne = document.getElementById('armOne');
 let armTwo = document.getElementById('armTwo');
+let failMsg = document.getElementById('failMsg');
+let victoryMsg = document.getElementById('victoryMsg');
 
 
 let words = ['hello', 'how', 'are', 'you', 'friend'];
@@ -67,6 +69,7 @@ const hangman = () => {
     let rightLeg = document.createElement('div');
     legContainer.appendChild(rightLeg);
     rightLeg.setAttribute('id', 'rightLeg');
+    failMsg.textContent = "Sorry, please try again!";
   }
 }
 

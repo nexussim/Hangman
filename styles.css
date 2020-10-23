@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(185, 184, 184);
+}
+
 #headContainer {
     display: flex;
     justify-content: center;
@@ -43,3 +47,57 @@
     -webkit-transform: skew(-45deg);
     transform: skew(-45deg);
 }
+
+#legContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#leftLeg {
+    width: 10px;
+    height: 100px;
+    margin-left: 40px;
+    margin-right: 90px;
+    background-color: black;
+    -moz-transform: skew(-45deg);
+    -webkit-transform: skew(-45deg);
+    transform: skew(-45deg);
+}
+
+#rightLeg {
+    width: 10px;
+    height: 100px;
+    
+    margin-right: 40px;
+    background-color: black;
+    -moz-transform: skew(45deg);
+    -webkit-transform: skew(45deg);
+    transform: skew(45deg);
+}
+
+#messages {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+#failMsg {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(255, 0, 102, .7)
+}
+
+@keyframes fadeInLeft {
+    0% {
+       opacity: 0;
+       transform: translateX(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateX(0);
+    }
+ }   
