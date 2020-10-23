@@ -22,16 +22,21 @@ function randomInteger(max) {
 let integer = randomInteger(4)
 let randomWord = words[integer];
 let numOfGuesses = 0;
+let correctGuesses = 0;
 
 const letterGuess = (letter) => {
   for (let i = 0; i < randomWord.length; i++) {
     if (letter === randomWord[i]) {
       console.log(randomWord[i]);
-    } else {
-      numOfGuesses++;
-      hangman();
-    }
+      correctGuesses++
+      break;
+    } 
   }
+    if (correctGuesses === 0) {
+        numOfGuesses++;
+        hangman();
+    }
+  
 }
 
 const hangman = () => {
@@ -72,4 +77,6 @@ const hangman = () => {
     failMsg.textContent = "Sorry, please try again!";
   }
 }
+
+
 
