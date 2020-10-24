@@ -1,3 +1,4 @@
+/* ACCESS WORD FROM FILE */
 // const fileSelector = document.getElementById('file-selector');
   
 // fileSelector.addEventListener('change', (event) => {
@@ -48,8 +49,6 @@ const letterInput = (letter) => {
     lettersUnderScore.setAttribute('class', 'lettersUnderScore');
     letterBoxes.appendChild(lettersUnderScore);
     lettersUnderScore.textContent = '_';
-
-    
   }
 }
 
@@ -97,15 +96,8 @@ const letterGuess = (letter) => {
     correctGuesses = 0;
 }
 
-// const previousGuesses = () => {
-//   let previousValue = '';
-//   for(let i = 0; i < previousLetters.length; i++) {
-//     letterGuesses.textContent = previousValue + previousLetters[i];
-//     previousValue = previousLetters[i];
-//   }
-// }
-
 const previousGuesses = () => {
+  letterGuesses.style.visibility = 'visible';
   for(let i = 0; i < previousLetters.length; i++) {
     let duplicateLetter = previousGuessesValue.includes(previousLetters[i]);
     if (previousGuessesValue !== previousLetters[i] && duplicateLetter !== true) {
@@ -167,6 +159,3 @@ const hangman = () => {
     failMsg.textContent = "Sorry, please try again!";
   }
 }
-
-
-
