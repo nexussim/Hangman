@@ -23,15 +23,16 @@ h2 {
     font-size: 40px;
     -webkit-animation: blink;
     animation: blink 1s infinite;
+    font-family: 'Rouge Script', cursive; 
 }
 
-@keyframes blink{
+@keyframes blink {
     0% {
         opacity: 0;
       }
-      100% {
+    100% {
         opacity: 1;
-      }
+    }
 }
 
 #wordContainer {
@@ -62,6 +63,7 @@ h2 {
 #inputContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #letterInput {
@@ -69,7 +71,8 @@ h2 {
     min-width: 200px;
     height: 30px;
     margin-bottom: 30px;
-    font-size: 20px;
+    font-size: 30px;
+    padding: 5px;
     font-family: 'Rouge Script', cursive; 
     background-color: rgb(185, 184, 184);
     border: 6px solid black;
@@ -78,13 +81,25 @@ h2 {
 }
 
 #letterInput::placeholder {
+    font-size: 20px;
+    margin-bottom: 5px;
     color: rgba(0, 0, 0, 0.219);
     background-color: rgb(185, 184, 184);
+}
+
+#letterGuesses {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-family: 'Rouge Script', cursive; 
 }
 
 #hangArm {
     max-width: 50%;
     height: 5px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 2px;
     border: 2px solid black;
     background-color: black;
 }

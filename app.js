@@ -10,6 +10,9 @@ let wordContainer = document.getElementById('wordContainer');
 let headContainer = document.getElementById('headContainer');
 let bodyContainer = document.getElementById('bodyContainer');
 let letterBoxes = document.getElementsByClassName('letterBoxes');
+let input = document.getElementById('letterInput');
+let letterGuesses = document.getElementById('letterGuesses');
+let previousGuessesValue = '';
 let mainBody = document.getElementById('mainBody');
 let armOne = document.getElementById('armOne');
 let armTwo = document.getElementById('armTwo');
@@ -18,6 +21,9 @@ let victoryMsg = document.getElementById('victoryMsg');
 
 
 let words = ['hello', 'how', 'are', 'you', 'friend'];
+let previousLetters = [];
+
+/* Get random word. */
 
 function randomInteger(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -28,13 +34,14 @@ let randomWord = words[integer];
 let numOfWrongGuesses = 0;
 let correctGuesses = 0;
 
+
 const letterInput = (letter) => {
   for (let i = 0; i < randomWord.length; i++) {
     let letterBoxes = document.createElement('div');
     letterBoxes.setAttribute('class', 'letterBoxes');
     wordContainer.appendChild(letterBoxes);
 
-    //Placeholder
+    /* Placeholder for stylings */
     letterBoxes.textContent = 'a';
 
     let lettersUnderScore = document.createElement('div');
@@ -55,25 +62,58 @@ const correctLetter = (letter, index) => {
 
 const letterGuess = (letter) => {
   let input = letter.target;
-  letter = input.value;
+  letter = input.value.toLowerCase();
   input.value = '';
+  previousLetters.push(letter)
   for (let i = 0; i < randomWord.length; i++) {
 
-    /* CHECK FOR DUPLICATE VALUE
-    if (letterBoxes[i] === randomWord[i])
-    */
+    /* CHECK FOR DUPLICATE AND CORRECT VALUE */
+    
     if (letter === randomWord[i]) {
+      let duplicateLetter = randomWord.includes(randomWord[i], i + 1);
+      let currentLetter = randomWord[i];
       correctGuesses++
-      correctLetter(randomWord[i], i);
-      break;
+      if (duplicateLetter) {
+        for (let j = 0; j < randomWord.length; j++) {
+          if (randomWord[j] === currentLetter) {
+            correctLetter(letter, j);
+            previousGuesses();
+          }
+        }
+      } else {
+        correctLetter(letter, i);
+        previousGuesses();
+        break;
+      }
     } 
   }
     if (correctGuesses === 0) {
         numOfWrongGuesses++;
         hangman();
+        previousGuesses();
+        correctGuesses = 0;
     }
     victory();
     correctGuesses = 0;
+}
+
+// const previousGuesses = () => {
+//   let previousValue = '';
+//   for(let i = 0; i < previousLetters.length; i++) {
+//     letterGuesses.textContent = previousValue + previousLetters[i];
+//     previousValue = previousLetters[i];
+//   }
+// }
+
+const previousGuesses = () => {
+  for(let i = 0; i < previousLetters.length; i++) {
+    let duplicateLetter = previousGuessesValue.includes(previousLetters[i]);
+    if (previousGuessesValue !== previousLetters[i] && duplicateLetter !== true) {
+      previousGuessesValue = previousGuessesValue + previousLetters[i];
+      letterGuesses.textContent = '';
+      letterGuesses.textContent = previousGuessesValue;
+    }
+  }
 }
 
 const victory = () => {
@@ -85,6 +125,7 @@ const victory = () => {
   }
   if (total === randomWord.length) {
     victoryMsg.style.visibility = 'visible';
+    input.maxLength = 0;
   }
 }
 
