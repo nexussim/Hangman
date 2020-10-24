@@ -1,5 +1,61 @@
 body {
     background-color: rgb(185, 184, 184);
+    user-select: none;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 120px;
+    font-size: 80px;
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    font-family: 'Rouge Script', cursive; 
+}
+
+#wordContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#letterBoxes {
+    font-size: 60px;
+    font-family: 'Rouge Script', cursive; 
+}
+
+#lettersUnderScore {
+    margin-left: 5px;
+    margin-top: -80px;
+    font-size: 60px;
+    font-family: 'Rouge Script', cursive; 
+}
+
+#inputContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#letterInput {
+    width: 200px;
+    min-width: 200px;
+    height: 30px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-family: 'Rouge Script', cursive; 
+    background-color: rgb(185, 184, 184);
+    border: 6px solid black;
+    border-radius: 5px;
+    text-align: center
+}
+
+#letterInput::placeholder {
+    color: rgba(0, 0, 0, 0.219);
+    background-color: rgb(185, 184, 184);
 }
 
 #headContainer {

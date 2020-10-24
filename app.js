@@ -4,6 +4,9 @@
 //     const fileList = event.target.files;
 //     console.log(fileList);
 // });
+
+let word = document.getElementById('word');
+let wordContainer = document.getElementById('wordContainer');
 let headContainer = document.getElementById('headContainer');
 let bodyContainer = document.getElementById('bodyContainer');
 let mainBody = document.getElementById('mainBody');
@@ -24,7 +27,26 @@ let randomWord = words[integer];
 let numOfGuesses = 0;
 let correctGuesses = 0;
 
+const letterInput = () => {
+  for (let i = 0; i < randomWord.length; i++) {
+    let letterBoxes = document.createElement('div');
+    letterBoxes.setAttribute('id', 'lettersUnderScore');
+    wordContainer.appendChild(letterBoxes);
+    letterBoxes.textContent = 'A'
+
+    let lettersUnderScore = document.createElement('div');
+    lettersUnderScore.setAttribute('id', 'lettersUnderScore');
+    letterBoxes.appendChild(lettersUnderScore);
+    lettersUnderScore.textContent = '_';
+
+    
+  }
+}
+
+letterInput()
+
 const letterGuess = (letter) => {
+  letter = letter.textContent;
   for (let i = 0; i < randomWord.length; i++) {
     if (letter === randomWord[i]) {
       console.log(randomWord[i]);
@@ -80,9 +102,3 @@ const hangman = () => {
 
 
 
-letterGuess('x');
-letterGuess('x');
-letterGuess('x');
-letterGuess('x');
-letterGuess('x');
-letterGuess('x');
