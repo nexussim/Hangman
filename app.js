@@ -9,6 +9,7 @@ let word = document.getElementById('word');
 let wordContainer = document.getElementById('wordContainer');
 let headContainer = document.getElementById('headContainer');
 let bodyContainer = document.getElementById('bodyContainer');
+let letterBoxes = document.getElementsByClassName('letterBoxes');
 let mainBody = document.getElementById('mainBody');
 let armOne = document.getElementById('armOne');
 let armTwo = document.getElementById('armTwo');
@@ -24,18 +25,20 @@ function randomInteger(max) {
 
 let integer = randomInteger(4)
 let randomWord = words[integer];
-let numOfGuesses = 0;
+let numOfWrongGuesses = 0;
 let correctGuesses = 0;
 
-const letterInput = () => {
+const letterInput = (letter) => {
   for (let i = 0; i < randomWord.length; i++) {
     let letterBoxes = document.createElement('div');
-    letterBoxes.setAttribute('id', 'lettersUnderScore');
+    letterBoxes.setAttribute('class', 'letterBoxes');
     wordContainer.appendChild(letterBoxes);
-    letterBoxes.textContent = 'A'
+
+    //Placeholder
+    letterBoxes.textContent = 'a';
 
     let lettersUnderScore = document.createElement('div');
-    lettersUnderScore.setAttribute('id', 'lettersUnderScore');
+    lettersUnderScore.setAttribute('class', 'lettersUnderScore');
     letterBoxes.appendChild(lettersUnderScore);
     lettersUnderScore.textContent = '_';
 
@@ -45,54 +48,78 @@ const letterInput = () => {
 
 letterInput()
 
+const correctLetter = (letter, index) => {
+  letterBoxes[index].textContent = letter;
+  letterBoxes[index].style.visibility = 'visible';
+}
+
 const letterGuess = (letter) => {
-  letter = letter.textContent;
+  let input = letter.target;
+  letter = input.value;
+  input.value = '';
   for (let i = 0; i < randomWord.length; i++) {
+
+    /* CHECK FOR DUPLICATE VALUE
+    if (letterBoxes[i] === randomWord[i])
+    */
     if (letter === randomWord[i]) {
-      console.log(randomWord[i]);
       correctGuesses++
+      correctLetter(randomWord[i], i);
       break;
     } 
   }
     if (correctGuesses === 0) {
-        numOfGuesses++;
+        numOfWrongGuesses++;
         hangman();
     }
-  
+    victory();
+    correctGuesses = 0;
+}
+
+const victory = () => {
+  let total = 0;
+  for (let i = 0; i < letterBoxes.length; i++) {
+    if (letterBoxes[i].textContent === randomWord[i]) {
+      total++;
+    }
+  }
+  if (total === randomWord.length) {
+    victoryMsg.style.visibility = 'visible';
+  }
 }
 
 const hangman = () => {
-  if (numOfGuesses === 1) {
+  if (numOfWrongGuesses === 1) {
     let circle = document.createElement('div');
     headContainer.appendChild(circle);
     circle.setAttribute('id', 'circle');
   }
 
-  if (numOfGuesses === 2) {
+  if (numOfWrongGuesses === 2) {
     let stickBody = document.createElement('div');
     mainBody.appendChild(stickBody);
     stickBody.setAttribute('id', 'stickBody');
   }
 
-  if (numOfGuesses === 3) {
+  if (numOfWrongGuesses === 3) {
     let leftArm = document.createElement('div');
     armOne.appendChild(leftArm);
     leftArm.setAttribute('id', 'leftArm');
   }
 
-  if (numOfGuesses === 4) {
+  if (numOfWrongGuesses === 4) {
     let rightArm = document.createElement('div');
     armTwo.appendChild(rightArm);
     rightArm.setAttribute('id', 'rightArm');
   }
 
-  if (numOfGuesses === 5) {
+  if (numOfWrongGuesses === 5) {
     let leftLeg = document.createElement('div');
     legContainer.appendChild(leftLeg);
     leftLeg.setAttribute('id', 'leftLeg');
   }
 
-  if (numOfGuesses === 6) {
+  if (numOfWrongGuesses === 6) {
     let rightLeg = document.createElement('div');
     legContainer.appendChild(rightLeg);
     rightLeg.setAttribute('id', 'rightLeg');

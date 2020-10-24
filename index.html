@@ -13,15 +13,25 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>Hangman</h1>
+        <div>
+            <h1>Hangman</h1>
+        </div>
+        <div>
+            <h2 id="victoryMsg">You win!!</h2>
+        </div>
         <div id="wordContainer">
 
         </div>
         <div id="inputContainer">
             <input type="text" id="letterInput" placeholder="Please enter letter..." onchange="letterGuess(event)">
         </div>
+        <div id="hangArm"></div>
+        <div id="hangEndContainer">
+            <div id="hangEnd"></div>
+        </div>
+        
         <div id="headContainer">
-
+            
         </div>
         <div id="bodyContainer">
             <div id="mainBody"></div>
@@ -33,7 +43,6 @@
         </div>
         <div id="messages">
             <div id="failMsg"></div>
-            <div id="victoryMsg"></div>
         </div>
 
         <script src="app.js" async defer></script>

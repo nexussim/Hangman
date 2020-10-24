@@ -7,7 +7,7 @@ h1 {
     display: flex;
     justify-content: center;
     margin-top: 15px;
-    margin-bottom: 120px;
+    margin-bottom: 80px;
     font-size: 80px;
     -webkit-animation-name: fadeInLeft;
     animation-name: fadeInLeft;
@@ -16,19 +16,43 @@ h1 {
     font-family: 'Rouge Script', cursive; 
 }
 
+h2 {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    -webkit-animation: blink;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+    0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+}
+
 #wordContainer {
     display: flex;
     justify-content: center;
+    flex-grow: 0;
+    height: 80px;
     margin-top: 50px;
     margin-bottom: 30px;
 }
 
-#letterBoxes {
+.letterBoxes {
+    visibility: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
     font-size: 60px;
     font-family: 'Rouge Script', cursive; 
 }
 
-#lettersUnderScore {
+.lettersUnderScore {
+    visibility: visible;
     margin-left: 5px;
     margin-top: -80px;
     font-size: 60px;
@@ -56,6 +80,24 @@ h1 {
 #letterInput::placeholder {
     color: rgba(0, 0, 0, 0.219);
     background-color: rgb(185, 184, 184);
+}
+
+#hangArm {
+    max-width: 50%;
+    height: 5px;
+    border: 2px solid black;
+    background-color: black;
+}
+
+#hangEndContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#hangEnd {
+    height: 40px;
+    width: 7px;
+    background-color: black;
 }
 
 #headContainer {
